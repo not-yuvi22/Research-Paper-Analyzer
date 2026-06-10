@@ -1,0 +1,28 @@
+2026-06-08 00:25:03,898 [INFO] Received upload requeest for file: IMG_20251129_140136.jpg
+2026-06-08 00:25:04,028 [WARNING] Rejected upload: File 'IMG_20251129_140136.jpg' is not a PDF.
+2026-06-10 12:01:18,107 [INFO] Received upload request for file: CLASS PRESENTATION.pdf
+2026-06-10 12:01:22,792 [INFO] Successfully processed paper 5ab5fff9-673a-4cfb-b09f-118be9ed35c7. Total characters extracted: 331
+2026-06-10 13:07:32,394 [INFO] Received upload request for file: Circuit theory assignment.pdf
+2026-06-10 13:07:35,624 [INFO] Successfully processed paper 11248000-34e9-4fb3-af3b-b95f55c59317. Total characters extracted: 0
+2026-06-10 13:13:18,875 [INFO] Received upload request for file: UNIT 1.pdf
+2026-06-10 13:13:25,435 [INFO] Successfully processed paper 40a802b8-177d-465a-822f-4a818e7c7ff4. Total characters extracted: 22378
+2026-06-10 13:14:19,143 [INFO] Retrieval request initiated for Paper ID: 11248000-34e9-4fb3-af3b-b95f55c59317
+2026-06-10 13:14:19,146 [INFO] Streaming file download successful for: Circuit theory assignment.pdf
+2026-06-10 13:25:05,876 [INFO] Received upload request for file: 
+2026-06-10 13:25:05,966 [WARNING] Rejected upload: File '' is not a PDF.
+2026-06-10 13:26:34,080 [INFO] Received upload request for file: 
+2026-06-10 13:26:34,133 [WARNING] Rejected upload: File '' is not a PDF.
+2026-06-10 13:28:13,018 [INFO] Received upload request for file: 
+2026-06-10 13:28:13,153 [WARNING] Rejected upload: File '' is not a PDF.
+2026-06-10 13:40:36,873 [INFO] Received upload request for file: lesson.pdf
+2026-06-10 13:40:41,220 [INFO] Successfully processed paper 2b889414-6785-4490-9962-86a21fc949d8. Total characters extracted: 1694
+2026-06-10 13:42:57,471 [INFO] Received upload request for file: lesson.pdf.docx
+2026-06-10 13:42:57,489 [WARNING] Rejected upload: File 'lesson.pdf.docx' is not a PDF.
+2026-06-10 14:18:52,413 [INFO] Retrieval request initiated for Paper ID: 12345678-1234-1234-1234-123456789abc
+2026-06-10 14:18:52,563 [WARNING] Retrieval failed: Paper ID 12345678-1234-1234-1234-123456789abc does not exist.
+2026-06-10 14:20:08,425 [INFO] Retrieval request initiated for Paper ID: abc
+2026-06-10 14:20:08,427 [WARNING] Retrieval failed: Paper ID abc does not exist.
+2026-06-10 14:20:40,153 [INFO] Retrieval request initiated for Paper ID: secret
+2026-06-10 14:20:40,154 [WARNING] Retrieval failed: Paper ID secret does not exist.
+2026-06-10 14:21:51,421 [INFO] Received upload request for file: lesson.pdf.docx
+2026-06-10 14:21:51,432 [WARNING] Rejected upload: File 'lesson.pdf.docx' is not a PDF.
