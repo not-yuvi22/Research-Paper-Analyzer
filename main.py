@@ -2,6 +2,7 @@ from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import uuid
 import os
+from services.summary_service import generate_summary
 #import shutil
 from pypdf import PdfReader
 from fastapi.responses import FileResponse
@@ -47,7 +48,7 @@ def home():
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Allows all origins during local development
-    allow_credentials=True,
+    #allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -78,6 +79,10 @@ def extract_text_from_pdf(pdf_path: str) -> str:
         
         # Clean up any trailing whitespace or empty gaps
         return extracted_text.strip()
+        logger.info(f"Extracted {len(extracted_text)} characters from {pdf_path}")
+    
+
+    
         
     except Exception as e:
         logger.error(f"Pypdf library failed parsing file {pdf_path}: {str(e)}")
@@ -90,6 +95,34 @@ def extract_text_from_pdf(pdf_path: str) -> str:
 #UPLOAD_DIR = "uploaded_papers"
 #if not os.path.exists(UPLOAD_DIR):
 #   os.makedirs(UPLOAD_DIR)
+
+#------------------------------------------------------------------
+#debug endpoint - remove after production
+#------------------------------------------------------------------
+
+@app.get("/paper/{paper_id}/raw-text")
+async def raw_text(paper_id: str):
+
+    files = os.listdir(UPLOAD_DIR)
+
+    matching = [f for f in files if f.startswith(paper_id)]
+
+    if not matching:
+        raise HTTPException(status_code=404, detail="Paper not found")
+
+    pdf_path = os.path.join(UPLOAD_DIR, matching[0])
+
+    text = extract_text_from_pdf(pdf_path)
+
+    return {
+        "paper_id": paper_id,
+        "characters": len(text),
+        "preview": text[:25000]
+    }
+
+#--------------------------------------------------------------------------
+#--------------------------------------------------------------------------
+
 
 @app.post("/upload-paper/",
     tags=["PAPER MANAGEMENT"],
@@ -230,13 +263,26 @@ async def download_file(paper_id: str):
 # 2. Summary Route (Mocked)
 @app.get("/paper/{paper_id}/summary")
 async def get_summary(paper_id: str):
+    print("SUMMARY ENDPOINT HIT")
+
+    files = os.listdir(UPLOAD_DIR)
+    matching_file = None
+
+    for file in files:
+        if file.startswith(paper_id):
+            matching_file = file
+            break
+
+    if not matching_file:
+        raise HTTPException(status_code = 404, detail = "Paper not found")
+    
+    pdf_path = os.path.join(UPLOAD_DIR, matching_file)
+
+    paper_text = extract_text_from_pdf(pdf_path)
+    
+    summary = generate_summary(paper_text)
     # Returning mock data so the frontend can design their UI blocks
-    return {
-        "paper_id": paper_id,
-        "abstract": "This is a mock abstract summary of the research paper...",
-        "key_findings": ["Finding A is significant", "Finding B relates to efficiency"],
-        "limitations": "Small sample size used in experiments."
-    }
+    return summary
 
 if __name__ == "__main__":
     import uvicorn

@@ -26,3 +26,109 @@
 2026-06-10 14:20:40,154 [WARNING] Retrieval failed: Paper ID secret does not exist.
 2026-06-10 14:21:51,421 [INFO] Received upload request for file: lesson.pdf.docx
 2026-06-10 14:21:51,432 [WARNING] Rejected upload: File 'lesson.pdf.docx' is not a PDF.
+2026-06-17 16:32:06,179 [INFO] Received upload request for file: SRN_new (1).pdf
+2026-06-17 16:32:15,814 [INFO] Successfully processed paper e3c55b47-28cb-48aa-a905-acef0c66e93e. Total characters extracted: 25454
+2026-06-17 16:59:37,041 [INFO] Received upload request for file: SRN_new (1).pdf
+2026-06-17 16:59:52,474 [INFO] Successfully processed paper 829d0532-3b8b-437b-9d32-6e92d132c8ae. Total characters extracted: 25454
+2026-06-18 15:29:58,610 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-18 15:30:03,454 [INFO] Successfully processed paper ab3880b9-5aa2-4add-a7ea-0b2930cbb7da. Total characters extracted: 22008
+2026-06-18 15:30:09,204 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-18 15:30:14,489 [INFO] Successfully processed paper 5b90489c-f43f-4572-9117-4cf522d50ed6. Total characters extracted: 22008
+2026-06-18 16:23:53,291 [INFO] Received upload request for file: SRN_new (1).pdf
+2026-06-18 16:24:04,630 [INFO] Successfully processed paper 9c9e23ad-58f7-40a6-bb35-59521a9eaa2c. Total characters extracted: 25454
+2026-06-18 16:25:35,501 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-06-18 17:17:17,739 [INFO] Received upload request for file: SRN_new (1).pdf
+2026-06-18 17:17:25,671 [INFO] Successfully processed paper b56f7f35-d788-4cca-801d-0ec1c9ec3cec. Total characters extracted: 25454
+2026-06-18 17:18:09,080 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-18 17:22:35,396 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-18 17:22:37,537 [INFO] Successfully processed paper f3113d62-60e0-493d-a8e6-91c00a977ec5. Total characters extracted: 22008
+2026-06-18 17:22:58,252 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 15:34:05,272 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 15:34:10,307 [INFO] Successfully processed paper e94b96ad-3cfb-4790-8757-1c7ebb0eec51. Total characters extracted: 22008
+2026-06-19 15:37:00,572 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 15:37:04,585 [INFO] Successfully processed paper a8e80f13-1cc7-41aa-8335-18bfc1830de3. Total characters extracted: 22008
+2026-06-19 15:44:24,173 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 15:44:26,233 [INFO] Successfully processed paper 14032924-1bad-4f5a-adc9-c794ef5c4d3a. Total characters extracted: 22008
+2026-06-19 15:44:52,342 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 15:44:54,363 [INFO] Successfully processed paper 8cd4394b-a5dd-4b79-b1a7-79f09a441a3f. Total characters extracted: 22008
+2026-06-19 16:05:40,101 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 16:05:42,712 [INFO] Successfully processed paper 095a973a-76ea-4444-a535-67991d299c89. Total characters extracted: 22008
+2026-06-19 16:06:27,294 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 16:06:29,300 [INFO] Successfully processed paper 3bb534c2-e126-480c-b13c-748b9ebe1aee. Total characters extracted: 22008
+2026-06-19 16:09:11,060 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 16:09:12,895 [INFO] Successfully processed paper 422ae3c7-584c-404d-8521-be6d9324b049. Total characters extracted: 22008
+2026-06-19 16:10:42,319 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 16:10:44,116 [INFO] Successfully processed paper f7b455c3-8528-48d3-8322-b5d810d07100. Total characters extracted: 22008
+2026-06-19 16:11:26,039 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 16:11:28,054 [INFO] Successfully processed paper e8a23a26-bc07-4cd2-88e4-97dcfa243d1b. Total characters extracted: 22008
+2026-06-19 16:11:51,492 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 16:13:15,619 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 16:14:10,854 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 16:14:13,183 [INFO] Successfully processed paper 625a8ea4-3cd3-4158-b368-b6c60aef1775. Total characters extracted: 22008
+2026-06-19 16:15:08,140 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 16:15:11,200 [INFO] Successfully processed paper 8318b493-a949-43ab-a9a9-3e9e75abd9f9. Total characters extracted: 22008
+2026-06-19 16:34:15,789 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 16:34:19,510 [INFO] Successfully processed paper 44b346f2-05ab-4011-bc4b-6f3cc7d0bdd5. Total characters extracted: 22008
+2026-06-19 16:37:02,002 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 16:37:04,363 [INFO] Successfully processed paper c913ff54-7dc1-4909-8d9a-225ae876e063. Total characters extracted: 22008
+2026-06-19 16:39:20,744 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 16:43:37,240 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 16:43:40,427 [INFO] Successfully processed paper ac0d2ba8-58c9-44ed-bfd0-d210d1f722a2. Total characters extracted: 22008
+2026-06-19 16:53:42,887 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 16:53:57,230 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-19 16:53:57,231 [INFO] Retrying request to /openai/v1/chat/completions in 22.000000 seconds
+2026-06-19 16:54:19,811 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-19 16:54:19,812 [INFO] Retrying request to /openai/v1/chat/completions in 12.000000 seconds
+2026-06-19 16:54:33,535 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 16:55:04,423 [INFO] Received upload request for file: 21921_itleAssignMaster_41558_02042026014517334.pdf
+2026-06-19 16:55:05,231 [INFO] Successfully processed paper 979b3521-f9ea-4adb-9731-18ee00196d6a. Total characters extracted: 942
+2026-06-19 16:58:44,322 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 16:58:46,129 [INFO] Successfully processed paper 4af489c7-9527-4321-81be-b0fb9729ef69. Total characters extracted: 22008
+2026-06-19 17:07:51,149 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 17:07:53,693 [INFO] Successfully processed paper 05e61855-ca18-46b1-b9ef-9303c9333f39. Total characters extracted: 22008
+2026-06-19 17:10:07,462 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 17:10:09,244 [INFO] Successfully processed paper 81b92d54-f6a6-4621-83fc-6f16e017e92a. Total characters extracted: 22008
+2026-06-19 17:11:26,002 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 17:11:28,076 [INFO] Successfully processed paper 149727e0-7078-48e7-9ea4-182aed79a8ff. Total characters extracted: 22008
+2026-06-19 17:18:26,928 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 17:18:29,506 [INFO] Successfully processed paper de721ab1-23da-41ef-bb97-965f5fb885af. Total characters extracted: 22008
+2026-06-19 17:19:00,562 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 17:19:02,603 [INFO] Successfully processed paper f5fbd0a9-549c-49ca-9531-f0b35a584773. Total characters extracted: 22008
+2026-06-19 17:24:29,822 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 17:24:32,493 [INFO] Successfully processed paper 81b53437-d7a0-43d2-9c2e-df7109922f03. Total characters extracted: 22008
+2026-06-19 21:45:30,839 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 21:45:33,421 [INFO] Successfully processed paper 06804a00-5cd1-4d53-9fa8-d63e29e997a9. Total characters extracted: 22008
+2026-06-19 21:52:53,215 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 21:52:55,132 [INFO] Successfully processed paper f66cacc0-06dd-4c07-afeb-d6c97661ae66. Total characters extracted: 22008
+2026-06-19 21:53:48,339 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 21:53:50,255 [INFO] Successfully processed paper 20a8fe42-03de-43dd-bc86-e847301931e6. Total characters extracted: 22008
+2026-06-19 21:57:09,553 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 21:57:11,311 [INFO] Successfully processed paper 986ccf3a-8bd4-4e9e-9a25-00d9aab2cbaf. Total characters extracted: 22008
+2026-06-19 22:02:53,668 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 22:02:55,802 [INFO] Successfully processed paper 941ff60a-7648-498a-975c-7f4a95758868. Total characters extracted: 22008
+2026-06-19 22:16:20,160 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 22:16:26,036 [INFO] Successfully processed paper 6e49d000-aec4-4e5d-b566-8a38908669e4. Total characters extracted: 22008
+2026-06-19 22:17:28,967 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 22:21:55,528 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 22:21:57,748 [INFO] Successfully processed paper 367e6fcf-a932-4e52-89b8-41c8a68afa87. Total characters extracted: 22008
+2026-06-19 22:30:26,794 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 22:32:35,071 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 22:41:44,613 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 22:50:55,357 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 22:50:58,100 [INFO] Successfully processed paper f71830a7-2657-4b07-b22d-a7dc189b582e. Total characters extracted: 22008
+2026-06-19 22:52:32,943 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 22:53:51,600 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 23:06:49,129 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 23:06:52,535 [INFO] Successfully processed paper 713638f4-02d8-4b12-9e0e-7de02e68e92e. Total characters extracted: 22008
+2026-06-19 23:15:58,240 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-19 23:16:21,953 [INFO] Successfully processed paper f0bc1b09-4b7a-40af-b6cd-1633ee02bff7. Total characters extracted: 22008
+2026-06-19 23:18:25,335 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 23:20:22,359 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-20 00:10:51,099 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-20 00:10:56,055 [INFO] Successfully processed paper 6ded33dd-7804-400b-a2b3-4e7dfb019a05. Total characters extracted: 22008
+2026-06-20 00:21:48,886 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-20 00:21:52,357 [INFO] Successfully processed paper 16fad1d9-5b4b-449d-a839-54d0e323fbcd. Total characters extracted: 22008
+2026-06-20 00:28:03,862 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-20 00:28:06,721 [INFO] Successfully processed paper fc2ed330-486f-4816-b00b-07bd2af8bafa. Total characters extracted: 22008
+2026-06-20 00:31:10,299 [INFO] Received upload request for file: srn_paper3.pdf
+2026-06-20 00:31:12,444 [INFO] Successfully processed paper 7ad68a84-28bf-4689-a987-26cd85be93e3. Total characters extracted: 22008
