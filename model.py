@@ -87,3 +87,4 @@ def safe_json_parse(text: str, fallback: dict = None) -> dict:
     except Exception:
         return fallback
 
+

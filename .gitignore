@@ -1,8 +1,11 @@
-venv/
+
 venv311/
 
-__pycache__/
-
-*.pyc 
-
 server.log
+
+api.py
+venv/
+__pycache__/
+summary.json
+*.pyc
+

@@ -1,0 +1,54 @@
+
+============================================================
+CHUNK 001 | SECTION: ABSTRACT
+============================================================
+
+IEEE GEOSCIENCE AND REMOTE SENSING LETTERS, VOL. 21, 2024 4003605 A Lightweight SAR Ship Detector Using End-to-End Image Preprocessing Network and Channel Feature Guided Spatial Pyramid Pooling Chuxuan Chen , Student Member, IEEE, Yimin Zhang , Ronglin Hu, and Yongtao Yu , Senior Member, IEEE AbstractRecently, in the field of synthetic aperture radar (SAR) ship detection, deep-learning-based methods have made significant strides in terms of detection accuracy and speed. However, small-scale targets and complex backgrounds remain a formidable obstacle to SAR ship detection. To overcome the aforementioned challenges, this letter proposes LiteSAR-Net, a lightweight SAR ship detector, to enhance ship detection capabilities in SAR imagery. In detail, an end-to-end image preprocessing network (E2IPNet) is proposed to strengthen context information and expand the network’s effective receptive field. In addition, to prevent the dilution of semantic information, the channel feature guided spatial pyramid pooling (CFGSPP) is proposed, which can adjust the parameters adaptively based on interchannel information.
+
+============================================================
+CHUNK 002 | SECTION: ABSTRACT
+============================================================
+
+In addition, to prevent the dilution of semantic information, the channel feature guided spatial pyramid pooling (CFGSPP) is proposed, which can adjust the parameters adaptively based on interchannel information. The proposed LiteSAR-Net achieved an average precision (AP) of 98.61% on the SAR ship detection dataset (SSDD) and 93.33% on the high-resolution SAR images dataset (HRSID), with a parameter of only 5.247 M, outperformed many state-of-the-art (SOTA) detectors.
+
+============================================================
+CHUNK 003 | SECTION: INTRODUCTION
+============================================================
+
+of the designed E2IPNet, the model surpasses by 2.56% and 2.32%, respectively, in terms of AP metrics on the SSDD and HRSID datasets. On the F1 metric, the addition of E2IPNet improves the baseline model by 0.01 on both datasets. TABLE I ABLATION EXPERIMENT ON THE SSDD AND HRSID DATASETS TABLE II EFFECTIVENESS OF THE PROPOSED CFGR-BLOCK 2) Effectiveness of the Proposed CFGR-Block: To validate the proposed CFGR-Block further, the maximum pooling of the baseline model is replaced sequentially by average pooling, convolution, and the proposed CFGR-Block with the same kernel size. As shown in Table II, the proposed CFGR-Block outperformed the baseline’s maximum pooling, average pooling, and convolution by 2.46%, 3.23%, and 2.45%, respectively. Moreover, the parameters of CFGR-Block are very close to the maximum pooling and average pooling, which is only 33.1% of the convolution. Comparison Experiments In this section, we conduct comparative experiments to further validate the effectiveness of the proposed LiteSAR-Net. LiteSAR-Net is compared with both lightweight and classical SOTA detectors.
+
+============================================================
+CHUNK 004 | SECTION: INTRODUCTION
+============================================================
+
+LiteSAR-Net is compared with both lightweight and classical SOTA detectors. For lightweight detectors, we include YOLOv5-s, YOLOX-s [6], RTMDet-s [7], and YOLOv8-s in our comparison. As for classical SOTA detectors, our comparison encompasses Faster R-CNN [2], YOLOv7 [4], and FCOS [5]. Furthermore, we compare LiteSAR-Net with the latest SAR ship detectors, such as the method proposed by Yang et al. The results of these comparisons are presented in Table III. Among these classic SOTA detectors with the highest detection accuracy is YOLOv7, which has an AP of 97.22% on the SSDD and 92.85% on the HRSID datasets, respectively. In contrast, LiteSAR-Net is 1.39% and 0.48% higher than YOLOv7 in SSDD and HRSID for AP, respectively, whereas the number of parameters is only 14.1% of YOLOv7. Among Authorized licensed use limited to: VIT UniversityChennai Campus. Downloaded on June 14,2026 at 17:38:23 UTC from IEEE Xplore.
+
+============================================================
+CHUNK 005 | SECTION: INTRODUCTION
+============================================================
+
+Downloaded on June 14,2026 at 17:38:23 UTC from IEEE Xplore. CHEN et al.: LIGHTWEIGHT SAR SHIP DETECTOR USING E2IPNet AND CFGSPP 4003605 TABLE III COMPARISON WITH THE SOTA OBJECT DETECTORS AND SAR SHIP DETECTORS ON THE SSDD AND HRSID DATASETS these SAR ship detectors, CSnNet has the minimum computational complexity, with a parameter that is 6.953 M more than the proposed LiteSAR-Net. Furthermore, the proposed LiteSAR-Net outperforms CSnNet by 2.13% in terms of AP metrics. Besides, visual comparison experiments are also conducted, and their results are shown in Fig. 4, in the scenarios depicted in the first column of the figure, almost all detectors identified the reflection at the image center as ships, resulting in numerous false positives. Only LiteSAR-Net and FCOS avoided false detections in this regard. However, FCOS missed detecting some of the ships on shore, while LiteSAR-Net successfully detected all the ships in the image.
+
+============================================================
+CHUNK 006 | SECTION: INTRODUCTION
+============================================================
+
+However, FCOS missed detecting some of the ships on shore, while LiteSAR-Net successfully detected all the ships in the image. Additionally, in the scenario depicted in the third column of the figure, featuring numerous dense ships, the detection accuracy of LiteSAR-Net, despite missing a small ship, notably surpasses that of other detectors like YOLOv7.
+
+============================================================
+CHUNK 007 | SECTION: METHODOLOGY
+============================================================
+
+Shi, “HRSID: A high-resolution SAR images dataset for ship detection and instance segmentation,” IEEE Access, vol. Gao, “A robust one-stage detector for multiscale ship detection with complex background in massive SAR images,” IEEE Trans. Zhang et al., “Balance learning for ship detection from synthetic aperture radar remote sensing imagery,” ISPRS J. Hui, “A novel anchorfree detector using global context-guide feature balance pyramid and united attention for SAR ship detection,” IEEE Geosci. Zhang, “A full-level context squeeze-and-excitation ROI extractor for SAR ship instance segmentation,” IEEE Geosci. Zhou, “CSnNet: A remote sensing detection network breaking the second-order limitation of transformers with recursive convolutions,” IEEE Trans. So Kweon, “CBAM: Convolutional block attention module,” in Proc. Ding, “Scaling up your kernels to 3131: Revisiting large kernel design in CNNs,” in Proc. Kalliatakis, “Refining activation downsampling with SoftPool,” in Proc. Authorized licensed use limited to: VIT UniversityChennai Campus. Downloaded on June 14,2026 at 17:38:23 UTC from IEEE Xplore.
+
+============================================================
+CHUNK 008 | SECTION: RESULTS
+============================================================
+
+demonstrate that the proposed LiteSAR-Net outperforms other existing SOTA methods in terms of precision and efficiency. However, horizontal bounding boxes-based object detection introduces more clutter regions and is prone to causing false negatives in postprocessing. In our future work, we will attempt to introduce oriented bounding boxes-based object detectors to tackle this challenge at its core. Yang, “Ship detection in largescale SAR images via spatial shuffle-group enhance attention,” IEEE Trans. Sun, “Faster R-CNN: Towards real-time object detection with region proposal networks,” IEEE Trans. Dollár, “Focal loss for dense object detection,” IEEE Trans. Liao, “YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors,” in Proc. He, “FCOS: Fully convolutional one-stage object detection,” in Proc. Sun, “YOLOX: Exceeding YOLO series in 2021,” 2021, arXiv:2107.08430. Lyu et al., “RTMDet: An empirical study of designing real-time object detectors,” 2022, arXiv:2212.07784. Shao, “Ship detection in SAR images based on an improved faster R-CNN,” in Proc. SAR Big Data Era, Models,
+
+============================================================
+CHUNK 009 | SECTION: CONCLUSION
+============================================================
+
+This letter proposes LiteSAR-Net, an innovative lightweight SAR ship detector, with the intent of enhancing ship detection capabilities in SAR imagery. On the one hand, E2IPNet is designed to expand the network’s effective receptive field and to improve the context information of ships in SAR images. CFGSPP, on the other hand, is proposed to reduce the loss of semantic information and to fuse multiscale ship features.
