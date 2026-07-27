@@ -1,6 +1,7 @@
-from sentence_transformers import SentenceTransformer
+#from sentence_transformers import SentenceTransformer
 from day4textchunk import process_chunks
 import numpy as np
+from embedding_model import get_embedding_model
 
 
 # ==================================================
@@ -10,7 +11,7 @@ import numpy as np
 # meaning). "all-MiniLM-L6-v2" is compact yet accurate.
 # Dense vector = fixed-length array of floats.
 # ==================================================
-model = SentenceTransformer("all-MiniLM-L6-v2")
+#model = SentenceTransformer("all-MiniLM-L6-v2")
 
 
 # ==================================================
@@ -47,6 +48,8 @@ def generate_chunk_embeddings(section_chunks: list) -> list:
     sections  = [item["section"] for item in section_chunks]
 
     print(f"\n  Total chunks to embed: {len(all_texts)}")
+
+    model = get_embedding_model()
 
     embeddings = model.encode(
         all_texts,

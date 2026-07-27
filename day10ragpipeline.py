@@ -1,14 +1,15 @@
-from sentence_transformers import SentenceTransformer
+#from sentence_transformers import SentenceTransformer
 import chromadb
 from model import generate_response
 import numpy as np
 import time
+from embedding_model import get_embedding_model
 
 
 # ==================================================
 # EMBEDDING MODEL
 # ==================================================
-embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
+#embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 
 
 # ==================================================
@@ -33,7 +34,8 @@ def enhance_query(query: str) -> str:
 # EMBED TEXT → VECTOR
 # ==================================================
 def embed(text: str) -> np.ndarray:
-    return embedding_model.encode(text)
+    model = get_embedding_model()
+    return model.encode(text)
 
 
 # ==================================================
@@ -96,6 +98,7 @@ SECTION_BOOST = {
 
 
 def rerank(question_emb: np.ndarray, chunks: list, question: str) -> list:
+    model = get_embedding_model()
 
     q_type = classify_question(question)
     boosts = SECTION_BOOST.get(q_type, {})
@@ -104,7 +107,7 @@ def rerank(question_emb: np.ndarray, chunks: list, question: str) -> list:
 
     for doc, meta in chunks:
 
-        doc_emb = embedding_model.encode(doc)
+        doc_emb = model.encode(doc)
 
         cosine_sim = float(
             np.dot(question_emb, doc_emb) /
