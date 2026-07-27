@@ -49,7 +49,8 @@ def generate_response(prompt: str) -> str:
 
     try:
         response = client.chat.completions.create(
-            model="llama-3.1-8b-instant",   # FAST + FREE Groq model
+            model="llama-3.1-8b-instant",
+            #model="meta-llama/llama-4-scout-17b-16e-instruct",   # FAST + FREE Groq model
             messages=[
                 {
                     "role": "system",
@@ -64,7 +65,7 @@ def generate_response(prompt: str) -> str:
                 }
             ],
             temperature=0.2,
-            max_tokens=2000
+            max_tokens=3000
         )
 
         return response.choices[0].message.content.strip()

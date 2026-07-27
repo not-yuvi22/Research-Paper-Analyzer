@@ -1,11 +1,40 @@
+# Virtual Environments
 
+venv/
 venv311/
 
+# Python Cache
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment Variables
+
+.env
+
+# Logs
+
+*.log
 server.log
 
-api.py
-venv/
-__pycache__/
-summary.json
-*.pyc
+# Local Data (Generated)
 
+papers/
+uploads/
+chroma_db/
+
+# OS Files
+
+.DS_Store
+Thumbs.db
+
+# IDE
+
+.vscode/
+.idea/
+
+# Test / Temporary Files
+
+summary.json

@@ -30,7 +30,7 @@ def get_or_create_collection(client, name: str = "research_papers"):
 # Upsert = insert if new, update if already exists —
 # prevents duplicate entries on repeated runs.
 # ==================================================
-def store_embeddings(collection, embedded_data: list) -> None:
+def store_embeddings(collection, embedded_data: list, paper_id) -> None:
 
     ids         = []
     embeddings  = []
@@ -38,10 +38,11 @@ def store_embeddings(collection, embedded_data: list) -> None:
     metadatas   = []
 
     for i, item in enumerate(embedded_data):
-        ids.append(f"chunk_{i:05d}")
+        ids.append(f"{paper_id}_sec_{item['section']}_{i:05d}")
+  #      ids.append(f"{paper_id}_chunk_{i:05d}")
         embeddings.append(item["embedding"])
         documents.append(item["chunk"])
-        metadatas.append({"section": item["section"]})
+        metadatas.append({"paper_id":paper_id, "section": item["section"], "chunk_index": i})
 
     collection.upsert(
         ids=ids,
@@ -50,7 +51,7 @@ def store_embeddings(collection, embedded_data: list) -> None:
         metadatas=metadatas
     )
 
-    print(f"\n  ✅ Stored {len(ids)} chunks in collection '{collection.name}'")
+    print(f"\n   Stored {len(ids)} chunks in collection '{collection.name}'")
 
 
 # ==================================================
@@ -58,8 +59,8 @@ def store_embeddings(collection, embedded_data: list) -> None:
 # End-to-end function: builds embeddings from a file
 # and persists them into ChromaDB in one call.
 # ==================================================
-def build_and_store(file_path: str) -> None:
-
+#def build_and_store(file_path: str) -> None:
+def build_and_store(file_path: str, paper_id: str) -> None:
     print("=" * 55)
     print("  CHROMA INGESTION PIPELINE")
     print("=" * 55)
@@ -69,16 +70,16 @@ def build_and_store(file_path: str) -> None:
     # ==================================================
     # DELETE OLD COLLECTION (NEW)
     # ==================================================
-    try:
-        client.delete_collection("research_papers")
-        print("\n  Old collection deleted")
-    except:
-        pass
+#    try:
+#        client.delete_collection("research_papers")
+#        print("\n  Old collection deleted")
+#    except:
+#        pass
 
     collection = get_or_create_collection(client)
 
     embedded_data = build_embeddings(file_path)
-    store_embeddings(collection, embedded_data)
+    store_embeddings(collection, embedded_data, paper_id)
 
     count = collection.count()
 
@@ -89,5 +90,12 @@ def build_and_store(file_path: str) -> None:
 # ==================================================
 # MAIN
 # ==================================================
+#if __name__ == "__main__":
+#    build_and_store("paper_text.txt")  
 if __name__ == "__main__":
-    build_and_store("paper_text.txt")  
+    import uuid
+
+    build_and_store(
+        "paper_text.txt",
+        str(uuid.uuid4())
+    )

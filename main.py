@@ -7,7 +7,10 @@ from services.summary_service import generate_summary
 from pypdf import PdfReader
 from fastapi.responses import FileResponse
 import logging
-
+from day10ragpipeline import load_collection, answer
+from pydantic import BaseModel
+from pipeline import process_uploaded_pdf
+from mindmaps_final import generate_mindmap
 
 
 
@@ -36,6 +39,81 @@ app = FastAPI(
     }
 )
 
+
+class ChatRequest(BaseModel):
+    mode: str = "hybrid"
+    question: str
+    paper_id: str 
+
+
+class MindMapRequest(BaseModel):
+    paper_id: str
+
+
+
+@app.post("/mindmap")
+async def mindmap(req: MindMapRequest):
+
+    collection = load_collection()
+
+    result = generate_mindmap(
+        collection,
+        req.paper_id
+    )
+
+    return{
+        "paper_id": req.paper_id,
+        "mindmap": result
+    }
+
+#-----------CHAT KE LIYE----------
+
+#class ChatRequest(BaseModel):
+#    question: str
+#----------------------------------
+#-----------CHAT ENDPOINT--------------
+VALID_MODES = ["paper", "hybrid", "explain"]
+
+@app.post("/chat")
+async def chat(req: ChatRequest):
+
+    mode = req.mode.lower()
+    if mode not in VALID_MODES:
+        mode = "hybrid"
+    print(f"Paper ID received: {req.paper_id}")
+
+    chat_collection = load_collection()
+
+    result = answer(
+        req.question,
+        chat_collection,
+        req.paper_id,
+        mode
+    )
+
+    return{
+        "mode": mode,
+        "response": result
+    }
+    
+        
+#@app.post("/chat-test")
+#async def chat(req: ChatRequest):
+    #chat_collection = load_collection()
+
+    #result = answer(
+    #    req.question,
+    #    chat_collection,
+    #    "hybrid"
+    #)
+
+#    return{
+#        "paper_id": req.paper_id,
+#        "question": req.question,
+#        "mode": req.mode,
+#        "response": "dummy answer"
+#    }
+#------------------------------------------
 
 @app.get("/")
 def home():
@@ -117,7 +195,7 @@ async def raw_text(paper_id: str):
     return {
         "paper_id": paper_id,
         "characters": len(text),
-        "preview": text[:25000]
+        "preview": text[:50000]
     }
 
 #--------------------------------------------------------------------------
@@ -147,6 +225,7 @@ async def upload_file(file: UploadFile = File(...)):
     
     # 2. Generate a unique ID for this paper session
     paper_id = str(uuid.uuid4())
+    print(f"Generated Paper ID: {paper_id}")
     
     # 3. Create a clean, unique file name to save inside your folder
     # Example: uploaded_papers/a1b2c3d4_sample.pdf
@@ -178,6 +257,16 @@ async def upload_file(file: UploadFile = File(...)):
         
         # Note: We are NOT deleting the file today! 
         # Keeping it saved in 'uploaded_papers' means your AI teammate can access it later.
+
+        rag_result = process_uploaded_pdf(file_path, paper_id)
+
+        if rag_result["status"] != "ready":
+            raise HTTPException(
+                status_code=500, 
+                detail = rag_result["message"]
+            )
+
+
 
         return {
             "paper_id": paper_id,
