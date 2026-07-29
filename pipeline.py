@@ -78,13 +78,17 @@ def prepare_paper(pdf_path, paper_id):
     print("STEP 4 : EMBEDDINGS")
     print("=" * 60)
 
+    print("STEP 4 START")
     embedded_data = build_embeddings(txt_file)
+    print("STEP 4 FINISHED")
 
     print("\n" + "=" * 60)
     print("STEP 5 : CHROMADB")
     print("=" * 60)
 
+    print("STEP 5 START")
     client = get_client()
+    print("CLIENT READY")
 
 #    try:
 #        client.delete_collection(
@@ -94,15 +98,18 @@ def prepare_paper(pdf_path, paper_id):
 #    except:
 #       pass
 
+
     collection = get_or_create_collection(
         client
     )
+    print("COLLECTION READY")
 
     store_embeddings(
         collection,
         embedded_data,
         paper_id
     )
+    print("STORE COMPLETE")
 
     print(
         f"\nStored {collection.count()} chunks"

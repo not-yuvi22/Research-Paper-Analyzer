@@ -50,14 +50,18 @@ def generate_chunk_embeddings(section_chunks: list) -> list:
 
     print(f"\n  Total chunks to embed: {len(all_texts)}")
 
+    print("LOADING MODEL...")
     model = get_embedding_model()
+    print("MODEL LOADED")
 
+    print("ENCODING STARTED")
     embeddings = model.encode(
         all_texts,
-        batch_size=32,
-        show_progress_bar=True,
+        batch_size=4,
+        show_progress_bar=False,
         convert_to_numpy=True
     )
+    print("ENCODING DONE")
 
     results = []
 
