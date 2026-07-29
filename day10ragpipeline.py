@@ -3,8 +3,8 @@ import chromadb
 from model import generate_response
 import numpy as np
 import time
-from embedding_model import get_embedding_model
-
+#from embedding_model import get_embedding_model
+from embeddings_api import get_embeddings
 
 # ==================================================
 # EMBEDDING MODEL
@@ -33,10 +33,14 @@ def enhance_query(query: str) -> str:
 # ==================================================
 # EMBED TEXT → VECTOR
 # ==================================================
+#def embed(text: str) -> np.ndarray:
+#    model = get_embedding_model()
+#    return model.encode(text)
 def embed(text: str) -> np.ndarray:
-    model = get_embedding_model()
-    return model.encode(text)
 
+    embedding = get_embeddings([text])[0]
+
+    return np.array(embedding, dtype=np.float32)
 
 # ==================================================
 # RETRIEVE TOP-K CHUNKS
@@ -96,39 +100,60 @@ SECTION_BOOST = {
     }
 }
 
-
 def rerank(question_emb: np.ndarray, chunks: list, question: str) -> list:
-    model = get_embedding_model()
 
     q_type = classify_question(question)
     boosts = SECTION_BOOST.get(q_type, {})
 
-    scored  = []
+    scored = []
 
     for doc, meta in chunks:
 
-        doc_emb = model.encode(doc)
+        doc_emb = np.array(
+            get_embeddings([doc])[0],
+            dtype=np.float32
+        )
 
         cosine_sim = float(
-            np.dot(question_emb, doc_emb) /
-            (np.linalg.norm(question_emb) * np.linalg.norm(doc_emb) + 1e-8)
+            np.dot(question_emb, doc_emb)
+            /
+            (
+                np.linalg.norm(question_emb)
+                *
+                np.linalg.norm(doc_emb)
+                + 1e-8
+            )
         )
 
         section = meta.get("section", "").lower()
 
         boost = 0.0
+
         for key, value in boosts.items():
+
             if key in section:
                 boost = value
                 break
 
         cosine_sim += boost
 
-        scored.append((cosine_sim, doc, meta))
+        scored.append(
+            (
+                cosine_sim,
+                doc,
+                meta
+            )
+        )
 
-    scored.sort(reverse=True, key=lambda x: x[0])
+    scored.sort(
+        reverse=True,
+        key=lambda x: x[0]
+    )
 
-    return [(doc, meta) for _, doc, meta in scored]
+    return [
+        (doc, meta)
+        for _, doc, meta in scored
+    ]
 
 
 # ==================================================
