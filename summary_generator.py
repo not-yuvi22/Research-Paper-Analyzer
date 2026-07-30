@@ -128,6 +128,7 @@ PAPER
 # EXTRACT JSON
 # ==================================================
 def extract_json(paper_text):
+    print(f"Paper Length = {len(paper_text)} characters")      #change 3
 
     prompt = build_prompt(paper_text)
 

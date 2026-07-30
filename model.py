@@ -44,7 +44,7 @@ def truncate_prompt(prompt: str, max_tokens: int = 3000) -> str:
 # GENERATE RESPONSE (GROQ VERSION)
 # ==================================================
 def generate_response(prompt: str) -> str:
-
+    print(f"\nPrompt Length = {len(prompt)} characters\n")     #change 1
     prompt = truncate_prompt(prompt)
 
     try:
@@ -70,8 +70,13 @@ def generate_response(prompt: str) -> str:
 
         return response.choices[0].message.content.strip()
 
-    except Exception as e:
-        return f"Error in Groq API call: {str(e)}"
+    except Exception as e:                          #change 2
+        print("\n========== GROQ ERROR ==========")
+        print(e)
+        print("================================\n")
+        raise
+#    except Exception as e:
+#        return f"Error in Groq API call: {str(e)}"
 
 
 # ==================================================
