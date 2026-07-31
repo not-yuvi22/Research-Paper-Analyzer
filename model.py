@@ -49,7 +49,7 @@ def generate_response(prompt: str) -> str:
 
     try:
         response = client.chat.completions.create(
-            model="llama-3.1-8b-instant",
+            model="openai/gpt-oss-120b",
             #model="meta-llama/llama-4-scout-17b-16e-instruct",   # FAST + FREE Groq model
             messages=[
                 {
