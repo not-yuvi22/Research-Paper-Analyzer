@@ -49,7 +49,7 @@ def generate_response(prompt: str) -> str:
 
     try:
         response = client.chat.completions.create(
-            model="openai/gpt-oss-120b",
+            model="openai/gpt-oss-120b",      # this is the model change in order to solve the blank summary issue
             #model="meta-llama/llama-4-scout-17b-16e-instruct",   # FAST + FREE Groq model
             messages=[
                 {
