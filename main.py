@@ -40,6 +40,11 @@ app = FastAPI(
 )
 
 
+@app.get("/health")
+def health():
+    return {"status": "healthy"}
+
+
 class ChatRequest(BaseModel):
     mode: str = "hybrid"
     question: str
