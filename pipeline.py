@@ -1,5 +1,5 @@
 # day11_chat_final.py
-
+import time     #changes
 import fitz
 import os
 import uuid
@@ -52,39 +52,50 @@ def pdf_to_text(
 # ==================================================
 def prepare_paper(pdf_path, paper_id):
 
+    total_start = time.time()     # changes
+
     os.makedirs("uploads", exist_ok=True)
 
     print("\n" + "=" * 60)
     print("STEP 1 : PDF READING")
     print("=" * 60)
+    start = time.time()   #changes
 
     txt_file = pdf_to_text(pdf_path, output_file=f"uploads/{paper_id}.txt")
+    print(f"PDF Extraction Time : {time.time()-start:.2f} sec")   #changes
 
     print("\n" + "=" * 60)
     print("STEP 2 : PREPROCESSING")
     print("=" * 60)
+    start = time.time()    #changes
 
     process_paper(txt_file)
+    print(f"Processing Time : {time.time()-start:.2f} sec")    #changes
 
     print("\n" + "=" * 60)
     print("STEP 3 : CHUNKING")
     print("=" * 60)
+    start = time.time()   #changes
 
     chunks = process_chunks(txt_file)
 
     save_chunks(chunks)
+    print(f"Chunking Time : {time.time()-start:.2f} sec")    #changes
 
     print("\n" + "=" * 60)
     print("STEP 4 : EMBEDDINGS")
     print("=" * 60)
+    start = time.time()   #changes
 
     print("STEP 4 START", flush=True)
     embedded_data = build_embeddings(txt_file)
     print("STEP 4 FINISHED", flush=True)
+    print(f"Embedding Time : {time.time()-start:.2f} sec")    #changes
 
     print("\n" + "=" * 60)
     print("STEP 5 : CHROMADB")
     print("=" * 60)
+    start = time.time()   #changes
 
     print("STEP 5 START", flush=True)
     client = get_client()
@@ -110,11 +121,15 @@ def prepare_paper(pdf_path, paper_id):
         paper_id
     )
     print("STORE COMPLETE", flush=True)
+    print(f"Chroma Store Time : {time.time()-start:.2f} sec")   #changes
 
     print(
         f"\nStored {collection.count()} chunks"
     )
 
+    print("\n" + "=" * 60)
+    print(f"TOTAL PIPELINE TIME : {time.time() - total_start:.2f} seconds")    #changes
+    print("=" * 60)
     return collection
 
 

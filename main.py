@@ -11,6 +11,7 @@ from day10ragpipeline import load_collection, answer
 from pydantic import BaseModel
 from pipeline import process_uploaded_pdf
 from mindmaps_final import generate_mindmap
+import time   #changes
 
 
 
@@ -373,8 +374,10 @@ async def get_summary(paper_id: str):
     pdf_path = os.path.join(UPLOAD_DIR, matching_file)
 
     paper_text = extract_text_from_pdf(pdf_path)
-    
+
+    start = time.time()   #changes
     summary = generate_summary(paper_text)
+    print(f"Summary Generation Time : {time.time()-start:.2f} sec")    #changes
     # Returning mock data so the frontend can design their UI blocks
     return summary
 
