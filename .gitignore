@@ -24,6 +24,10 @@ server.log
 papers/
 uploads/
 chroma_db/
+chromadb_store/
+services/
+storage/uploaded_papers/
+uploaded_papers/
 
 # OS Files
 
