@@ -141,7 +141,7 @@ def process_paper(file_path: str) -> dict:
 
 
 # ==================================================
-# MAIN — quick sanity check
+# MAIN — FOR LOCAL TESTING
 # ==================================================
 if __name__ == "__main__":
 
