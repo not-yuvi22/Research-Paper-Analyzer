@@ -2,18 +2,18 @@ import json
 import re
 
 
-# ==================================================
+
 # GROQ CONFIG
-# ==================================================
+
 from groq import Groq
 from api import GROQ_API_KEY
 
 client = Groq(api_key=GROQ_API_KEY)
 
 
-# ==================================================
+
 # CLEAN LLM OUTPUT
-# ==================================================
+
 def clean_llm_output(text: str) -> str:
 
     text = re.sub(r"```json", "", text, flags=re.I)
@@ -29,10 +29,10 @@ def clean_llm_output(text: str) -> str:
     return text
 
 
-# ==================================================
-# (OPTIONAL) TRUNCATE PROMPT SAFETY
+
+# TRUNCATE PROMPT SAFETY
 # Kept to preserve your original architecture idea
-# ==================================================
+
 def truncate_prompt(prompt: str, max_tokens: int = 3000) -> str:
     max_chars = max_tokens * 4
     if len(prompt) > max_chars:
@@ -40,9 +40,9 @@ def truncate_prompt(prompt: str, max_tokens: int = 3000) -> str:
     return prompt
 
 
-# ==================================================
+
 # GENERATE RESPONSE (GROQ VERSION)
-# ==================================================
+
 def generate_response(prompt: str) -> str:
     print(f"\nPrompt Length = {len(prompt)} characters\n")     #change 1
     prompt = truncate_prompt(prompt)
@@ -50,7 +50,7 @@ def generate_response(prompt: str) -> str:
     try:
         response = client.chat.completions.create(
             model="openai/gpt-oss-120b",      # this is the model change in order to solve the blank summary issue
-            #model="meta-llama/llama-4-scout-17b-16e-instruct",   # FAST + FREE Groq model
+            #model="meta-llama/llama-4-scout-17b-16e-instruct",   # FREE Groq model
             messages=[
                 {
                     "role": "system",
@@ -75,13 +75,12 @@ def generate_response(prompt: str) -> str:
         print(e)
         print("================================\n")
         raise
-#    except Exception as e:
-#        return f"Error in Groq API call: {str(e)}"
 
 
-# ==================================================
+
+
 # SAFE JSON PARSER
-# ==================================================
+
 def safe_json_parse(text: str, fallback: dict = None) -> dict:
 
     if fallback is None:
