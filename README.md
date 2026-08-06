@@ -180,34 +180,32 @@ project/
 #  Authors
 
 ### Satyam Kumar Yadav
-
 **Frontend Developer & UI/UX**
 
-* Developed frontend components
-* Improved application responsiveness and user experience
-* Assisted with feature integration, testing, and UI refinement
+* Developed frontend components.
+* Improved application responsiveness and user experience.
+* Assisted with feature integration, testing, and UI refinement.
+* Designed and developed the React UI and integrated backend APIs.
+* Built the chat interface, summary pages and implemented interactive mind-map visualization using React Flow.
 
 ### Yuvaraj Mishra
-
 **Backend Developer**
 
-* Designed and developed the FastAPI backend
-* Implemented the complete RAG pipeline
-* Integrated Jina AI Embeddings, ChromaDB, and Groq APIs
-* Developed AI Summary, Chat, and Mind Map generation modules
-* Managed backend deployment and API integration
+* Designed and developed the FastAPI backend.
+* Implemented the complete RAG pipeline.
+* Integrated Jina AI Embeddings, ChromaDB, and Groq APIs.
+* Developed AI Summary, Chat, and Mind Map generation modules.
+* Managed backend deployment and API integration.
 
 ### Pushkar Kumar Pandey
+**AI/ML Engineer**
 
-**Frontend Developer**
-
-* Designed and developed the React user interface
-* Integrated backend APIs
-* Built the chat interface and summary pages
-* Implemented interactive mind map visualization using React Flow
+* Designed and optimized prompts for AI-powered research paper summarization.
+* Implemented and refined structured summary generation.
+* Developed prompt workflows for Retrieval-Augmented Generation (RAG) based interactions.
+* Engineered prompts for context-aware question answering across 3 different chat modes.
+* Developed prompt templates for AI- generated mind-map creation.
+* Evaluated and improved the quality, consistency and relevance of LLM responses.
 
 ---
 
-#  License
-
-This project is licensed under the MIT License.
