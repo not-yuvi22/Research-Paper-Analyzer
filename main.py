@@ -21,8 +21,8 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler("server.log"),     #saves logs permanently to this file
-        logging.StreamHandler()                #still prints logs live to terminal
+        logging.FileHandler("server.log"),     
+        logging.StreamHandler()                
     ]
 )
 logger= logging.getLogger("PaperAI")
@@ -72,12 +72,7 @@ async def mindmap(req: MindMapRequest):
         "mindmap": result
     }
 
-#-----------CHAT KE LIYE----------
-
-#class ChatRequest(BaseModel):
-#    question: str
-#----------------------------------
-#-----------CHAT ENDPOINT--------------
+#-----------FOR CHAT FEATURE-----------
 VALID_MODES = ["paper", "hybrid", "explain"]
 
 @app.post("/chat")
@@ -103,23 +98,6 @@ async def chat(req: ChatRequest):
     }
     
         
-#@app.post("/chat-test")
-#async def chat(req: ChatRequest):
-    #chat_collection = load_collection()
-
-    #result = answer(
-    #    req.question,
-    #    chat_collection,
-    #    "hybrid"
-    #)
-
-#    return{
-#        "paper_id": req.paper_id,
-#        "question": req.question,
-#        "mode": req.mode,
-#        "response": "dummy answer"
-#    }
-#------------------------------------------
 
 @app.get("/")
 def home():
@@ -128,10 +106,10 @@ def home():
         "service": "Academic Paper AI Processor"
     }
 
-# Enable CORS so your frontend friend can connect
+# Enabled CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows all origins during local development
+    allow_origins=["*"],  
     #allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -145,7 +123,7 @@ UPLOAD_DIR = os.path.join(BASE_STORAGE_DIR, "uploaded_papers")
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 #defining constants for validation
-MAX_FILE_SIZE = 10*1024*1024    #10MB in bytes
+MAX_FILE_SIZE = 50*1024*1024    #10MB in bytes
 
 
 def extract_text_from_pdf(pdf_path: str) -> str:
@@ -173,15 +151,11 @@ def extract_text_from_pdf(pdf_path: str) -> str:
         # If the file is corrupted or unreadable, raise an error
         raise ValueError("The PDF file structure appears corrupted or unreadable.")
 
-  #  extracted_text = "This is dummy test extracted from a new file"
-  #  return extracted_text
+  
 
-#UPLOAD_DIR = "uploaded_papers"
-#if not os.path.exists(UPLOAD_DIR):
-#   os.makedirs(UPLOAD_DIR)
 
 #------------------------------------------------------------------
-#debug endpoint - remove after production
+#debug endpoint - For test purposes only
 #------------------------------------------------------------------
 
 @app.get("/paper/{paper_id}/raw-text")
@@ -251,9 +225,7 @@ async def upload_file(file: UploadFile = File(...)):
                     raise HTTPException(status_code=413,
                         detail=f"Validation Failed: File exceeds the maximum allowed limit of {MAX_FILE_SIZE//(1024*1024)}MB.")
                 buffer.write(chunk)
-            # shutil.copyfileobj takes the incoming file stream from the frontend 
-            # and pipes it directly into our open hard drive file buffer
-           # shutil.copyfileobj(file.file, buffer)
+            
             
         # 5. Extract text from the newly saved permanent file
         final_extracted_text = extract_text_from_pdf(file_path)
@@ -261,8 +233,7 @@ async def upload_file(file: UploadFile = File(...)):
 
         logger.info(f"Successfully processed paper {paper_id}. Total characters extracted: {text_length}")
         
-        # Note: We are NOT deleting the file today! 
-        # Keeping it saved in 'uploaded_papers' means your AI teammate can access it later.
+        
 
         rag_result = process_uploaded_pdf(file_path, paper_id)
 
@@ -293,15 +264,14 @@ async def upload_file(file: UploadFile = File(...)):
         if os.path.exists(file_path):
             os.remove(file_path)
 
-        #Log the complete error stack trace on the server backend side
+        
         logger.critical(f"Unexpected system crash during upload processing: {str(e)}", exc_info=True)
-        #present a clean, secure error message to the user without leaking code tracebacks
         raise HTTPException(status_code=500, detail="A secure server-side error occurred while saving this paper. Please try again later.")
 
 
 
 
-# 3. FILE DOWNLOAD / RETRIEVAL ROUTE
+# 3. FILE DOWNLOAD ROUTE
 # ==========================================
 @app.get("/download-paper/{paper_id}", tags=["Paper Management"], summary="Retrieve and download a saved pdf by its ID",
          response_description="Streams the raw binary PDF file back to the browser.")
@@ -320,8 +290,7 @@ async def download_file(paper_id: str):
         raise HTTPException(
             status_code=400, detail="Malicious imput format detected."
         )
- #   Locates the saved PDF file on the server using its unique paper_id 
-  #  and streams it back to the user's computer as a download.
+ 
     
     # 1. Scan your storage directory to find a file that starts with this paper_id
     target_filename = None
@@ -342,8 +311,7 @@ async def download_file(paper_id: str):
     # 3. Reconstruct the absolute path to that specific file
     file_path = os.path.join(UPLOAD_DIR, target_filename)
     
-    # 4. Extract the original filename (removing the uuid prefix) for the download presentation
-    # Example: "uuid_EE GATE SYLLABUS.pdf" -> "EE GATE SYLLABUS.pdf"
+    # 4. Extract the original filename (removing the uuid prefix)
     original_filename = target_filename.split("_", 1)[-1]
 
     logger.info(f"Streaming file download successful for: {original_filename}")
@@ -355,7 +323,7 @@ async def download_file(paper_id: str):
         media_type="application/pdf"
     )
 
-# 2. Summary Route (Mocked)
+# 2. Summary Route 
 @app.get("/paper/{paper_id}/summary")
 async def get_summary(paper_id: str):
     print("SUMMARY ENDPOINT HIT")
@@ -377,8 +345,7 @@ async def get_summary(paper_id: str):
 
     start = time.time()   #changes
     summary = generate_summary(paper_text)
-    print(f"Summary Generation Time : {time.time()-start:.2f} sec")    #changes
-    # Returning mock data so the frontend can design their UI blocks
+    print(f"Summary Generation Time : {time.time()-start:.2f} sec")    #change
     return summary
 
 if __name__ == "__main__":
