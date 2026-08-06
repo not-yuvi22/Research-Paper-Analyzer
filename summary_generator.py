@@ -43,9 +43,9 @@ def safe_json_parse(text):
         return {}
 
 
-# ==================================================
+
 # PROMPT
-# ==================================================
+
 def build_prompt(paper_text):
 
     return f"""
@@ -124,9 +124,9 @@ PAPER
 {paper_text}
 """
 
-# ==================================================
+
 # EXTRACT JSON
-# ==================================================
+
 def extract_json(paper_text):
     print(f"Paper Length = {len(paper_text)} characters")      #change 3
 
@@ -140,29 +140,29 @@ def extract_json(paper_text):
     print(response)
     print("\n==================================================\n")
 
-    # ------------------------------------------
+    
     # REMOVE MARKDOWN
-    # ------------------------------------------
+    
     response = re.sub(r"```json", "", response, flags=re.I)
     response = re.sub(r"```", "", response)
     response = response.strip()
 
-    # ------------------------------------------
+    
     # TRY NORMAL JSON PARSE
-    # ------------------------------------------
+    
     try:
         parsed = json.loads(response)
 
-        print("\n✅ Full JSON Parsed Successfully\n")
+        print("\n Full JSON Parsed Successfully\n")
 
     except Exception as e:
 
         print("\nJSON PARSE ERROR:")
         print(e)
 
-        # ------------------------------------------
+        
         # RECOVER TRUNCATED JSON
-        # ------------------------------------------
+        
         start = response.find("{")
 
         if start != -1:
@@ -181,11 +181,11 @@ def extract_json(paper_text):
             try:
                 parsed = json.loads(candidate)
 
-                print("\n✅ Recovered Partial JSON\n")
+                print("\n Recovered Partial JSON\n")
 
             except Exception:
 
-                print("\n❌ Recovery Failed\n")
+                print("\n Recovery Failed\n")
                 parsed = {}
 
         else:
@@ -231,9 +231,8 @@ def extract_json(paper_text):
  
 
 
-# ==================================================
+
 # SAVE JSON
-# ==================================================
 def save_json(data, filename="summary.json"):
 
     with open(filename, "w", encoding="utf-8") as f:
@@ -242,34 +241,9 @@ def save_json(data, filename="summary.json"):
     print(f"\nSaved -> {filename}")
 
 
-# ==================================================
+
 # LOAD PAPER
-# ==================================================
 def load_paper(file_path="paper_text.txt"):
 
     with open(file_path, "r", encoding="utf-8") as f:
         return f.read()
-
-
-# ==================================================
-# MAIN
-# ==================================================
-#if __name__ == "__main__":
-
- #   print("Loading paper...")
-
- #   paper_text = load_paper("paper_chunks.txt")
-
-    # reduce context size to avoid truncated JSON
-
- #   print("Paper Length:", len(paper_text))
-
-  #  print("Generating structured JSON summary...")
-
-  #  result = extract_json(paper_text)
-
-   # save_json(result)
-
-   # print("\n===== JSON OUTPUT =====\n")
-
-  #  print(json.dumps(result, indent=4, ensure_ascii=False))
