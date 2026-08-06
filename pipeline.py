@@ -18,9 +18,7 @@ from day10ragpipeline import start_rag
 # ==================================================
 # PDF -> TEXT
 # ==================================================
-# ==================================================
-# PDF -> TEXT
-# ==================================================
+
 def pdf_to_text(
     pdf_path,
     output_file="paper_text.txt"
@@ -39,14 +37,11 @@ def pdf_to_text(
     ) as f:
         f.write(text)
 
-    print(f"✅ Text extracted ({len(text)} chars)")
+    print(f" Text extracted ({len(text)} chars)")
 
     return output_file
 
 
-# ==================================================
-# COMPLETE PIPELINE
-# ==================================================
 # ==================================================
 # COMPLETE PIPELINE
 # ==================================================
@@ -101,13 +96,7 @@ def prepare_paper(pdf_path, paper_id):
     client = get_client()
     print("CLIENT READY", flush=True)
 
-#    try:
-#        client.delete_collection(
-#            "research_papers"
-#        )
-#        print("Old collection deleted")
-#    except:
-#       pass
+    
 
 
     collection = get_or_create_collection(
@@ -158,18 +147,6 @@ def process_uploaded_pdf(pdf_path, paper_id):
 # ==================================================
 # CHAT ENTRY
 # ==================================================
-#def run_chat(
-#    pdf_path="SRN_new.pdf"
-#):
-
-#    prepare_paper(pdf_path, paper_id)
-
-#    print("\n" + "=" * 60)
-#    print("RAG CHAT READY")
- #   print("=" * 60)
-
-  #  start_rag()
-
 
 
 def run_chat(pdf_path="SRN_new.pdf"):
