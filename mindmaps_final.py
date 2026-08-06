@@ -143,7 +143,7 @@ def generate_mindmap(collection, paper_id):
     print("GENERATING MIND MAP")
     print("=" * 60)
 
-    # Step 1: Retrieve all chunks
+    # 1: Retrieving all chunks
     chunks = get_all_chunks(collection, paper_id)
 
     if not chunks:
@@ -151,15 +151,15 @@ def generate_mindmap(collection, paper_id):
 
     print(f"Retrieved {len(chunks)} chunks.")
 
-    # Step 2: Build paper context
+    # 2: Building paper context
     context = build_context(chunks)
 
-    # Step 3: Build prompt
+    # 3: Building prompt
     prompt = build_mindmap_prompt(context)
 
     print("Generating hierarchy using LLM...")
 
-    # Step 4: Call LLM
+    # 4: Calling the LLM
     response = generate_response(prompt)
 
  #   print("\n========== RAW LLM RESPONSE ==========\n")
@@ -183,15 +183,8 @@ def generate_mindmap(collection, paper_id):
         )
 
 
-#    if not isinstance(hierarchy, dict):
-#        raise ValueError("LLM did not return a valid hierarchy JSON.")
-#    except Exception as e:
-#        raise ValueError(f"Invalid JSON returned by LLM.\n{e}")
-
     print("Hierarchy generated successfully.")
 
-    # Step 6: Convert hierarchy to React Flow
-#    reactflow_json = tree_to_reactflow(hierarchy)
 
     print("React Flow JSON generated.")
 
