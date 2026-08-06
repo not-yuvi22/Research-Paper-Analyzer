@@ -1,15 +1,8 @@
-#from sentence_transformers import SentenceTransformer
 import chromadb
 from model import generate_response
 import numpy as np
 import time
-#from embedding_model import get_embedding_model
 from embeddings_api import get_embeddings
-
-# ==================================================
-# EMBEDDING MODEL
-# ==================================================
-#embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 
 
 # ==================================================
@@ -33,14 +26,13 @@ def enhance_query(query: str) -> str:
 # ==================================================
 # EMBED TEXT → VECTOR
 # ==================================================
-#def embed(text: str) -> np.ndarray:
-#    model = get_embedding_model()
-#    return model.encode(text)
+    
 def embed(text: str) -> np.ndarray:
 
     embedding = get_embeddings([text])[0]
 
     return np.array(embedding, dtype=np.float32)
+    
 
 # ==================================================
 # RETRIEVE TOP-K CHUNKS
@@ -217,9 +209,7 @@ def inject_anchor_chunks(collection, question: str, ranked: list, paper_id: str)
     return merged
 
 
-# ==================================================
-# RETRIEVAL PIPELINE
-# ==================================================
+
 # ==================================================
 # RETRIEVAL PIPELINE + TIMING
 # ==================================================
@@ -328,22 +318,11 @@ OUTPUT JSON ONLY
 }}
 """
 }
+
+
 # ==================================================
 # PROMPT BUILDER (UPDATED)
 # ==================================================
-#def build_prompt(question: str, chunks: list, mode: str = "hybrid") -> str:
-
- #   context_blocks = ""
- #   for doc, meta in chunks:
-#        section_label = meta.get("section", "unknown").upper()
-#        context_blocks += f"\n[{section_label}]\n{doc}\n"
-
-#    template = PROMPT_MODES.get(mode, PROMPT_MODES["hybrid"])
-
-#    return template.format(
-#        context_blocks=context_blocks,
-#        question=question
-#    )
 
 
 def build_prompt(question, chunks, mode):
