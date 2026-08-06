@@ -1,11 +1,12 @@
+#THIS FILE IS FOR TESTING PURPOSES 
+
 import json
 
 from model import generate_response
 
 
-# ==========================================
 # LOAD METADATA JSON
-# ==========================================
+
 def load_metadata(file_path):
 
     with open(
@@ -17,13 +18,11 @@ def load_metadata(file_path):
         return json.load(file)
 
 
-# ==========================================
 # COLLECT IMPORTANT TEXT
-# ==========================================
-# Uses already extracted metadata.
-#
+
+# Uses already extracted metadata
 # No need to process paper again.
-# ==========================================
+
 def build_keyword_context(metadata):
 
     text_parts = []
@@ -81,11 +80,11 @@ def build_keyword_context(metadata):
     )
 
 
-# ==========================================
+
 # BUILD PROMPT
-# ==========================================
+
 # Extract only important technical terms.
-# ==========================================
+
 def build_prompt(context):
 
     return f"""
@@ -110,9 +109,9 @@ Return:
 """
 
 
-# ==========================================
+
 # EXTRACT KEYWORDS
-# ==========================================
+
 def extract_keywords(context):
 
     prompt = build_prompt(
@@ -135,9 +134,9 @@ def extract_keywords(context):
         }
 
 
-# ==========================================
+
 # SAVE KEYWORDS
-# ==========================================
+
 def save_keywords(data):
 
     with open(
@@ -158,9 +157,9 @@ def save_keywords(data):
     )
 
 
-# ==========================================
+
 # COMPLETE PIPELINE
-# ==========================================
+
 def run_keyword_extraction():
 
     print(
@@ -194,9 +193,8 @@ def run_keyword_extraction():
     return keywords
 
 
-# ==========================================
+
 # RUN
-# ==========================================
 if __name__ == "__main__":
 
     result = run_keyword_extraction()
