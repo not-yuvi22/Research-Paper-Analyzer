@@ -59,7 +59,7 @@ def store_embeddings(collection, embedded_data: list, paper_id) -> None:
 # End-to-end function: builds embeddings from a file
 # and persists them into ChromaDB in one call.
 # ==================================================
-#def build_and_store(file_path: str) -> None:
+
 def build_and_store(file_path: str, paper_id: str) -> None:
     print("=" * 55)
     print("  CHROMA INGESTION PIPELINE")
@@ -67,14 +67,7 @@ def build_and_store(file_path: str, paper_id: str) -> None:
 
     client = get_client()
 
-    # ==================================================
-    # DELETE OLD COLLECTION (NEW)
-    # ==================================================
-#    try:
-#        client.delete_collection("research_papers")
-#        print("\n  Old collection deleted")
-#    except:
-#        pass
+    
 
     collection = get_or_create_collection(client)
 
@@ -87,11 +80,9 @@ def build_and_store(file_path: str, paper_id: str) -> None:
     print("  ChromaDB path    : ./chroma_db")
     print("=" * 55)
 
-# ==================================================
-# MAIN
-# ==================================================
-#if __name__ == "__main__":
-#    build_and_store("paper_text.txt")  
+
+# MAIN - FOR LOCAL TESTING 
+
 if __name__ == "__main__":
     import uuid
 
