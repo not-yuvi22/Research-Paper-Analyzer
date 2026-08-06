@@ -1,172 +1,213 @@
-# 📄 Research Paper Analyzer & Simplifier
+#  Research Paper Analyzer & Simplifier
 
-An AI-powered research paper analysis platform that enables users to upload research papers, generate structured summaries, ask questions using Retrieval-Augmented Generation (RAG), and visualize the paper as an interactive mind map.
-
----
-
-## Features
-
-- PDF Upload and Processing
-- Automatic Text Extraction
-- Intelligent Text Chunking
-- Semantic Embedding Generation
-- ChromaDB Vector Database
-- Retrieval-Augmented Generation (RAG)
-- AI Chat with Research Papers
-- Multiple Chat Modes
-  - Paper Mode
-  - Hybrid Mode
-  - Explain Mode
-- Section-wise Summarization
-- Interactive Mind Map Generation
-- Multi-user Support using Unique Paper IDs
+An AI-powered web application that enables users to analyze research papers through intelligent summarization, Retrieval-Augmented Generation (RAG) based conversations, and interactive mind map visualization. The platform combines modern Large Language Models (LLMs), semantic search, and vector databases to provide a faster and more intuitive way of understanding academic literature.
 
 ---
 
-## Tech Stack
+#  Features
 
-### Backend
+*  PDF Upload & Processing
+*  Automatic Text Extraction
+*  Intelligent Text Chunking
+*  Semantic Embedding Generation using **Jina AI Embeddings**
+*  ChromaDB Vector Database Integration
+*  Retrieval-Augmented Generation (RAG) Chat
+*  AI-Powered Structured Research Paper Summarization
+*  Interactive Mind Map Generation
+*  Multiple Chat Modes
 
-- FastAPI
-- Python
-- ChromaDB
-- Sentence Transformers
-- Groq LLM API
-- NumPy
-
-### Frontend
-
-- React
-- React Flow
+  * Paper Mode
+  * Hybrid Mode
+  * Explain Mode
+*  Multi-user Support using Unique Paper IDs
+*  REST API built with FastAPI
+*  Deployed Backend on Render
 
 ---
 
-## Project Workflow
+#  Tech Stack
 
+## Backend
+
+* Python
+* FastAPI
+* ChromaDB
+* Jina AI Embeddings API
+* Groq LLM API
+* PyMuPDF (fitz)
+* NumPy
+
+## Frontend
+
+* React
+* React Flow
+* Axios
+
+## Deployment
+
+* Render
+
+---
+
+#  Project Workflow
+
+```text
 PDF Upload
-
-↓
-
+      │
+      ▼
 Text Extraction
-
-↓
-
-Chunking
-
-↓
-
-Embedding Generation
-
-↓
-
-ChromaDB Storage
-
-↓
-
+      │
+      ▼
+Text Preprocessing
+      │
+      ▼
+Chunk Generation
+      │
+      ▼
+Jina AI Embeddings
+      │
+      ▼
+ChromaDB Vector Storage
+      │
+      ▼
+Retrieval-Augmented Generation (RAG)
+      │
+      ▼
 AI Features
-
-- Summary
-- Chat
-- Mind Map
-
----
-
-## API Endpoints
-
-### Upload Paper
-
-POST
-
-```
-/upload-paper
-```
-
-Returns
-
-- paper_id
-
----
-
-### Summary
-
-GET
-
-```
-/paper/{paper_id}/summary
+ ├── Summary
+ ├── Chat
+ └── Mind Map
 ```
 
 ---
 
-### Chat
+#  API Endpoints
 
-POST
+### Upload Research Paper
 
+```http
+POST /upload-paper
 ```
-/chat
+
+Returns:
+
+* `paper_id`
+
+---
+
+### Generate Summary
+
+```http
+GET /paper/{paper_id}/summary
 ```
 
-Modes
+Returns a structured AI-generated summary of the uploaded research paper.
 
-- paper
-- hybrid
-- explain
+---
+
+### AI Chat
+
+```http
+POST /chat
+```
+
+Supported Modes:
+
+* `paper`
+* `hybrid`
+* `explain`
+
+Returns context-aware answers using Retrieval-Augmented Generation.
 
 ---
 
 ### Mind Map
 
-POST
-
-```
-/mindmap
+```http
+POST /mindmap
 ```
 
-Returns a hierarchical JSON structure compatible with React Flow.
+Returns a hierarchical JSON structure compatible with React Flow for visualizing the paper.
 
 ---
 
-## Folder Structure
+### Health Check
 
+```http
+GET /health
 ```
+
+Returns the backend service status.
+
+---
+
+#  Project Structure
+
+```text
 project/
 │
 ├── main.py
 ├── model.py
 ├── mindmaps_final.py
+├── day3textprepro.py
+├── day4textchunk.py
+├── day8embeddings.py
 ├── day9chroma.py
 ├── day10ragpipeline.py
+├── day11_chat_final.py
 ├── requirements.txt
-├── .gitignore
 ├── README.md
+├── .env.example
 └── ...
 ```
 
 ---
 
-## Future Improvements
+#  Future Improvements
 
-- User Authentication
-- Chat History
-- Session Management
-- Paper Dashboard
-- Persistent Cloud Storage
-- Citation Generator
-- Review & Annotation System
-
----
-
-## Authors
-
-Backend Developer
-
-- Yuvaraj
-
-Frontend
-
-- Team Project
+* User Authentication
+* Persistent Chat History
+* Session Management
+* User Dashboard
+* Paper Comparison
+* Citation Generator
+* Research Paper Annotation
+* Cloud Storage Integration
+* Performance Optimization for Large Papers
 
 ---
 
-## License
+#  Authors
 
-This project is developed for educational and research purposes.
+### Satyam Kumar Yadav
+
+**Frontend Developer & UI/UX**
+
+* Developed frontend components
+* Improved application responsiveness and user experience
+* Assisted with feature integration, testing, and UI refinement
+
+### Yuvaraj Mishra
+
+**Backend Developer**
+
+* Designed and developed the FastAPI backend
+* Implemented the complete RAG pipeline
+* Integrated Jina AI Embeddings, ChromaDB, and Groq APIs
+* Developed AI Summary, Chat, and Mind Map generation modules
+* Managed backend deployment and API integration
+
+### Pushkar Kumar Pandey
+
+**Frontend Developer**
+
+* Designed and developed the React user interface
+* Integrated backend APIs
+* Built the chat interface and summary pages
+* Implemented interactive mind map visualization using React Flow
+
+---
+
+#  License
+
+This project is licensed under the MIT License.
