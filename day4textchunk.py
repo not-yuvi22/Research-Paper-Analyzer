@@ -2,11 +2,11 @@ import re
 from day3textprepro import process_paper
 
 
-# ==================================================
+
 # CLEAN TEXT
 # Secondary cleaning pass specifically for OCR noise.
 # OCR = Optical Character Recognition (text from scans).
-# ==================================================
+
 def clean_text(text: str) -> str:
 
     text = re.sub(r"\s+",   " ",  text)   # collapse whitespace
@@ -16,13 +16,13 @@ def clean_text(text: str) -> str:
     return text.strip()
 
 
-# ==================================================
+
 # SENTENCE SPLITTER
 # Splits text into sentences, then filters out
 # degenerate fragments — too short, broken citations,
 # or orphaned clause stubs from PDF extraction.
 # Degenerate = malformed / structurally incomplete.
-# ==================================================
+
 def split_sentences(text: str) -> list:
 
     text = clean_text(text)
@@ -52,7 +52,7 @@ def split_sentences(text: str) -> list:
 
         cleaned.append(s)
 
-    # --------------------------------------------------
+   
     # MERGE BROKEN FRAGMENTS
     # If a sentence starts lowercase and is very short,
     # it is likely a continuation of the previous one.
@@ -75,20 +75,20 @@ def split_sentences(text: str) -> list:
     return fixed
 
 
-# ==================================================
-# WORD COUNT — simple utility
-# ==================================================
+
+# WORD COUNT 
+
 def word_count(text: str) -> int:
     return len(text.split())
 
 
-# ==================================================
+
 # ADAPTIVE CHUNKING
 # Groups sentences into chunks bounded by max_words.
 # overlap=N retains the last N sentences from a chunk
 # into the next — preserving cross-boundary context.
 # Adaptive = adjusts behaviour based on input size.
-# ==================================================
+
 def chunk_text(sentences: list, max_words: int = 170, overlap: int = 2) -> list:
 
     chunks  = []
@@ -116,12 +116,12 @@ def chunk_text(sentences: list, max_words: int = 170, overlap: int = 2) -> list:
     return chunks
 
 
-# ==================================================
+
 # UNIVERSAL PIPELINE
 # Processes all sections and returns a flat list of
 # annotated chunks (each tagged with its section name).
 # Annotated = labelled with metadata.
-# ==================================================
+
 def process_chunks(file_path: str) -> list:
 
     data     = process_paper(file_path)
@@ -153,9 +153,9 @@ def process_chunks(file_path: str) -> list:
     return all_chunks
 
 
-# ==================================================
+
 # SAVE CHUNKS — writes chunks to disk for inspection
-# ==================================================
+
 def save_chunks(all_chunks: list, filename: str = "paper_chunks.txt") -> None:
 
     with open(filename, "w", encoding="utf-8") as f:
@@ -167,11 +167,11 @@ def save_chunks(all_chunks: list, filename: str = "paper_chunks.txt") -> None:
             f.write("=" * 60 + "\n\n")
             f.write(item["text"] + "\n")
 
-    print(f"\n✅ Saved {len(all_chunks)} chunks → {filename}")
+    print(f"\n Saved {len(all_chunks)} chunks → {filename}")
 
 
-# ==================================================
-# QUALITY REPORT
+
+# QUALITY CHECK
 # Diagnostic tool to flag undersized or oversized
 # chunks before they pollute the embedding store.
 # Diagnostic = used for analysis/debugging.
@@ -200,16 +200,16 @@ def test_chunk_quality(all_chunks: list) -> None:
         print(f"  Section : {c['section']}")
         print(f"  Words   : {words}  ", end="")
 
-        if   words < 40:  print("⚠️  TOO SMALL — likely a fragment")
-        elif words > 250: print("⚠️  TOO LARGE — may introduce noise")
-        else:             print("✅  ACCEPTABLE SIZE")
+        if   words < 40:  print(" TOO SMALL — likely a fragment")
+        elif words > 250: print(" TOO LARGE — may introduce noise")
+        else:             print(" ACCEPTABLE SIZE")
 
         print(f"  Preview : {text[:300]}")
         print()
 
 
-# ==================================================
-# MAIN
+
+# MAIN - FOR LOCAL TESTING
 # ==================================================
 if __name__ == "__main__":
 
