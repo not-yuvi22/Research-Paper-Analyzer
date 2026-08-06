@@ -4,7 +4,6 @@ import json
 from model import generate_response, safe_json_parse
 from day4textchunk import process_chunks
 
-#import json
 import re
 
 
@@ -46,9 +45,9 @@ def safe_json_parse(text):
         return {}
 
 
-# ==================================================
+
 # PROMPT
-# ==================================================
+
 def build_prompt(paper_text):
 
     return f"""
@@ -127,9 +126,9 @@ PAPER
 {paper_text}
 """
 
-# ==================================================
+
 # EXTRACT JSON
-# ==================================================
+
 def extract_json(paper_text):
 
     prompt = build_prompt(paper_text)
@@ -155,7 +154,7 @@ def extract_json(paper_text):
     try:
         parsed = json.loads(response)
 
-        print("\n✅ Full JSON Parsed Successfully\n")
+        print("\n Full JSON Parsed Successfully\n")
 
     except Exception as e:
 
@@ -183,11 +182,11 @@ def extract_json(paper_text):
             try:
                 parsed = json.loads(candidate)
 
-                print("\n✅ Recovered Partial JSON\n")
+                print("\n Recovered Partial JSON\n")
 
             except Exception:
 
-                print("\n❌ Recovery Failed\n")
+                print("\n Recovery Failed\n")
                 parsed = {}
 
         else:
@@ -232,10 +231,8 @@ def extract_json(paper_text):
 
  
 
-
-# ==================================================
 # SAVE JSON
-# ==================================================
+
 def save_json(data, filename="summary.json"):
 
     with open(filename, "w", encoding="utf-8") as f:
@@ -244,18 +241,18 @@ def save_json(data, filename="summary.json"):
     print(f"\nSaved -> {filename}")
 
 
-# ==================================================
+
 # LOAD PAPER
-# ==================================================
+
 def load_paper(file_path="paper_text.txt"):
 
     with open(file_path, "r", encoding="utf-8") as f:
         return f.read()
 
 
-# ==================================================
-# MAIN
-# ==================================================
+
+# MAIN - FOR LOCAL TESTING
+
 if __name__ == "__main__":
 
     print("Loading paper...")
