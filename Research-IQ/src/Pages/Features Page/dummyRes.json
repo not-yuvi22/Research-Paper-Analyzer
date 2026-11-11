@@ -1,0 +1,201 @@
+{
+  "paper_id": "40cc4e55-d25d-4e00-b75e-ac4c08511543",
+  "mindmap": {
+    "paperId": "40cc4e55-d25d-4e00-b75e-ac4c08511543",
+    "title": "Underwater Sensing of Ship-Radiated Noise Based on Interpretable Deep Learning and Acoustic Feature Fusion",
+    "mindMap": {
+      "name": "Underwater Sensing of Ship-Radiated Noise Based on Interpretable Deep Learning and Acoustic Feature Fusion",
+      "type": "root",
+      "children": [
+        {
+          "name": "Introduction",
+          "type": "section",
+          "children": [
+            {
+              "name": "Problem Statement",
+              "type": "concept",
+              "children": [
+                {
+                  "name": "Ship-Radiated Noise",
+                  "type": "concept"
+                },
+                {
+                  "name": "Limited Data Availability",
+                  "type": "concept"
+                },
+                {
+                  "name": "Hydrophone Placement",
+                  "type": "concept"
+                }
+              ]
+            },
+            {
+              "name": "Methodology",
+              "type": "concept",
+              "children": [
+                {
+                  "name": "Deep Learning",
+                  "type": "concept"
+                },
+                {
+                  "name": "Convolutional Neural Networks (CNNs)",
+                  "type": "concept"
+                },
+                {
+                  "name": "Transformer",
+                  "type": "concept"
+                }
+              ]
+            },
+            {
+              "name": "Dataset",
+              "type": "concept",
+              "children": [
+                {
+                  "name": "DeepShip Dataset",
+                  "type": "dataset"
+                },
+                {
+                  "name": "ShipEar Dataset",
+                  "type": "dataset"
+                },
+                {
+                  "name": "Ocean Networks Canada (ONC) Society",
+                  "type": "dataset"
+                }
+              ]
+            },
+            {
+              "name": "Experiment Setup",
+              "type": "concept",
+              "children": [
+                {
+                  "name": "Automatic Identification System (AIS)",
+                  "type": "dataset"
+                },
+                {
+                  "name": "Navigational Data",
+                  "type": "dataset"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Methodology",
+          "type": "section",
+          "children": [
+            {
+              "name": "Data Fusion",
+              "type": "concept",
+              "children": [
+                {
+                  "name": "Channel Attention Module",
+                  "type": "concept"
+                },
+                {
+                  "name": "Acoustic Feature Fusion",
+                  "type": "concept"
+                }
+              ]
+            },
+            {
+              "name": "Model Training",
+              "type": "concept",
+              "children": [
+                {
+                  "name": "Local Interpretable Model-Agnostic Explanation (LIME)",
+                  "type": "concept"
+                },
+                {
+                  "name": "Conditional Training",
+                  "type": "concept"
+                }
+              ]
+            },
+            {
+              "name": "Model Evaluation",
+              "type": "concept",
+              "children": [
+                {
+                  "name": "Classification Accuracy",
+                  "type": "metric"
+                },
+                {
+                  "name": "Ablation Experiment",
+                  "type": "concept"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Results",
+          "type": "section",
+          "children": [
+            {
+              "name": "Classification Performance",
+              "type": "concept",
+              "children": [
+                {
+                  "name": "Single Acoustic Features",
+                  "type": "concept"
+                },
+                {
+                  "name": "Mixed Acoustic Features",
+                  "type": "concept"
+                }
+              ]
+            },
+            {
+              "name": "Feature Fusion",
+              "type": "concept",
+              "children": [
+                {
+                  "name": "Time-Frequency Spectrum",
+                  "type": "concept"
+                },
+                {
+                  "name": "Mel Frequency Cepstral Coefficients (MFCC) Spectrum",
+                  "type": "concept"
+                },
+                {
+                  "name": "Detection of Envelope Modulation on Noise (DEMON) Spectrum",
+                  "type": "concept"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Discussion",
+          "type": "section",
+          "children": [
+            {
+              "name": "Interpretable Machine Learning",
+              "type": "concept"
+            },
+            {
+              "name": "Model Interpretability",
+              "type": "concept"
+            }
+          ]
+        },
+        {
+          "name": "Conclusion",
+          "type": "section",
+          "children": [
+            {
+              "name": "Contributions",
+              "type": "concept"
+            },
+            {
+              "name": "Future Work",
+              "type": "concept"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

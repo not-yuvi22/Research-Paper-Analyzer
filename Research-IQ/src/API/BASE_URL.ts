@@ -1,0 +1,1 @@
+export const BASE_URL = "https://research-paper-analyzer-backend-42n8.onrender.com";
